@@ -1,0 +1,9 @@
+/Users/kayrayildiz/Desktop/oop3-assignment-723073/movie-watchlist/src/main/java/com/oop3/watchlist/App.java
+/Users/kayrayildiz/Desktop/oop3-assignment-723073/movie-watchlist/src/main/java/com/oop3/watchlist/Main.java
+/Users/kayrayildiz/Desktop/oop3-assignment-723073/movie-watchlist/src/main/java/com/oop3/watchlist/api/OmdbClient.java
+/Users/kayrayildiz/Desktop/oop3-assignment-723073/movie-watchlist/src/main/java/com/oop3/watchlist/api/TmdbClient.java
+/Users/kayrayildiz/Desktop/oop3-assignment-723073/movie-watchlist/src/main/java/com/oop3/watchlist/controller/MovieController.java
+/Users/kayrayildiz/Desktop/oop3-assignment-723073/movie-watchlist/src/main/java/com/oop3/watchlist/db/MovieDAO.java
+/Users/kayrayildiz/Desktop/oop3-assignment-723073/movie-watchlist/src/main/java/com/oop3/watchlist/model/Movie.java
+/Users/kayrayildiz/Desktop/oop3-assignment-723073/movie-watchlist/src/main/java/com/oop3/watchlist/service/MovieService.java
+/Users/kayrayildiz/Desktop/oop3-assignment-723073/movie-watchlist/src/main/java/com/oop3/watchlist/service/MovieServiceTest.java

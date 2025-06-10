@@ -1,3 +1,4 @@
+
 # oop3-assignment-723073
 
 
@@ -91,3 +92,35 @@ For open source projects, say how it is licensed.
 
 ## Project status
 If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+
+# Movie Watchlist 📽️
+
+This is a Java-based backend application for managing a personal movie watchlist. The project was developed as part of the OOP3 course assignment.
+
+## 🔧 Features
+
+- Search movies by title using OMDb and TMDB APIs
+- Fetch and store movie details (title, year, director, genre)
+- Download and save movie images
+- Show similar movies
+- Store movies in SQLite database
+- RESTful API:
+  - Add a movie
+  - List watchlist (with pagination)
+  - Update watched status
+  - Update movie rating
+  - Delete a movie
+
+## 🚀 How to Run
+
+### Prerequisites:
+- Java 17+
+- Maven
+
+### Steps:
+```bash
+git clone https://gitlab.com/your_username/oop3-assignment-723073.git
+cd movie-watchlist
+mvn compile
+mvn exec:java
+
