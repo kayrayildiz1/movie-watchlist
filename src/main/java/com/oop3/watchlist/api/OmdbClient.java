@@ -8,32 +8,53 @@ import okhttp3.Response;
 
 import java.io.IOException;
 
+/**
+ * Client for fetching movie data from the OMDb API.
+ */
 public class OmdbClient {
+
     private static final String API_KEY = "32dcb0cc";
     private static final OkHttpClient client = new OkHttpClient();
 
+    /**
+     * Fetches movie details from OMDb using the given title.
+     * @param title the movie title
+     * @return JSON object with movie data; or null if request fails
+     */
     public static JsonObject fetchMovie(String title) {
         String url = "http://www.omdbapi.com/?t=" + title.replace(" ", "%20") + "&apikey=" + API_KEY;
 
         try {
-            Request request = new Request.Builder().url(url).build();
+            Request request = new Request.Builder()
+                    .url(url)
+                    .build();
+
             Response response = client.newCall(request).execute();
+
+            if (response.body() == null) {
+                System.err.println("OMDb response body is null.");
+                return null;
+            }
 
             String json = response.body().string();
             JsonObject obj = JsonParser.parseString(json).getAsJsonObject();
 
             if (!response.isSuccessful()) {
-                throw new RuntimeException("OMDb HTTP error: " + response.code());
+                System.err.println("OMDb HTTP error: " + response.code());
+                return null;
             }
 
             if (obj.has("Response") && obj.get("Response").getAsString().equalsIgnoreCase("False")) {
-                String errorMessage = obj.has("Error") ? obj.get("Error").getAsString() : "Unknown error";
-                throw new RuntimeException("OMDb API error: " + errorMessage);
+                String errorMessage = obj.has("Error") ? obj.get("Error").getAsString() : "Unknown OMDb error";
+                System.err.println("OMDb API error: " + errorMessage);
+                return null;
             }
 
             return obj;
+
         } catch (IOException e) {
-            throw new RuntimeException("Failed to fetch movie from OMDb: " + e.getMessage(), e);
+            System.err.println("Failed to fetch from OMDb: " + e.getMessage());
+            return null;
         }
     }
 }

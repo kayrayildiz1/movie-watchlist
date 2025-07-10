@@ -6,6 +6,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Data Access Object for managing movie records in the SQLite database.
+ */
 public class MovieDAO {
 
     private static final String DB_URL = "jdbc:sqlite:watchlist.db";
@@ -31,12 +34,12 @@ public class MovieDAO {
         try (Connection conn = DriverManager.getConnection(DB_URL)) {
             String sql = "INSERT INTO movies (title, year, director, genre, watched, rating) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, movie.title);
-            stmt.setString(2, movie.year);
-            stmt.setString(3, movie.director);
-            stmt.setString(4, movie.genre);
-            stmt.setBoolean(5, movie.watched);
-            stmt.setInt(6, movie.rating);
+            stmt.setString(1, movie.getTitle());
+            stmt.setString(2, movie.getYear());
+            stmt.setString(3, movie.getDirector());
+            stmt.setString(4, movie.getGenre());
+            stmt.setBoolean(5, movie.isWatched());
+            stmt.setInt(6, movie.getRating());
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Failed to save movie", e);
@@ -54,13 +57,13 @@ public class MovieDAO {
 
             while (rs.next()) {
                 Movie movie = new Movie();
-                movie.id = rs.getInt("id");
-                movie.title = rs.getString("title");
-                movie.year = rs.getString("year");
-                movie.director = rs.getString("director");
-                movie.genre = rs.getString("genre");
-                movie.watched = rs.getBoolean("watched");
-                movie.rating = rs.getInt("rating");
+                movie.setId(rs.getInt("id"));
+                movie.setTitle(rs.getString("title"));
+                movie.setYear(rs.getString("year"));
+                movie.setDirector(rs.getString("director"));
+                movie.setGenre(rs.getString("genre"));
+                movie.setWatched(rs.getBoolean("watched"));
+                movie.setRating(rs.getInt("rating"));
                 movies.add(movie);
             }
 
@@ -105,4 +108,3 @@ public class MovieDAO {
         }
     }
 }
-
