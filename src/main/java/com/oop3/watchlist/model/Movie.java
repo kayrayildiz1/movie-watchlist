@@ -3,16 +3,42 @@ package com.oop3.watchlist.model;
 import jakarta.persistence.*;
 import java.util.List;
 
+/**
+ * Represents a Movie entity stored in the database.
+ */
+
 @Entity
 public class Movie {
+    
+     /**
+     * Unique ID of the movie.
+     */
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+      /**
+     * Title of the movie.
+     */
+
     private String title;
+
+     /**
+     * Release year of the movie.
+     */
     private String year;
+    
+        /**
+     * Director of the movie.
+     */
+
     private String director;
+
+        /**
+     * Genre of the movie.
+     */
+
     private String genre;
     private boolean watched;
     private int rating;
