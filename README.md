@@ -56,3 +56,7 @@ mvn spring-boot:run
 Or build and run:
 mvn clean package
 java -jar target/movie-watchlist-1.0.0.jar
+
+
+
+Final project version - includes OMDB/TMDB API integration and unit tests.
