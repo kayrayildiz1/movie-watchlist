@@ -7,27 +7,37 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * REST controller for movie endpoints.
+ */
 @RestController
 @RequestMapping("/api/movies")
 public class MovieController {
 
     private final MovieService movieService;
 
-    @Autowired // Spring otomatik olarak MovieService'i enjekte eder
+    @Autowired 
     public MovieController(MovieService movieService) {
         this.movieService = movieService;
     }
-
+/**
+     * Gets all movies.
+     */
     @GetMapping
     public List<Movie> getAllMovies() {
         return movieService.getAllMovies();
     }
+/**
+     * Adds a new movie.
+     */
 
     @PostMapping
     public Movie addMovie(@RequestBody Movie movie) {
         return movieService.addMovie(movie);
     }
-
+  /**
+     * Deletes a movie.
+     */
     @DeleteMapping("/{id}")
     public void deleteMovie(@PathVariable Long id) {
         movieService.deleteMovie(id);
