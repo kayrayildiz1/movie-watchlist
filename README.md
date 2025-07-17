@@ -1,79 +1,58 @@
-# 🎬 Movie Watchlist
+## 🎬 Movie Watchlist Application
 
-This is a Java-based backend application for managing a personal movie watchlist. It was developed as part of the OOP3 course assignment.
+This is a Java-based Spring Boot backend application for managing a personal movie watchlist. It integrates with external APIs (OMDb and TMDB) to fetch movie data and supports basic CRUD operations.
 
----
+## 📌 Features
 
-## 🔧 Features
+- Add new movies with metadata fetched from OMDb
+- View all saved movies
+- Delete movies by ID
+- Check if a movie exists by ID
+- Store movie images and similar movies (optional fields)
+- External API integration with OMDb and TMDB
+- Clean architecture using MVC pattern
+- Unit tests with JUnit and Mockito
 
-- 🎥 Search movies by title using the **OMDb API**
-- 🧠 Simulate TMDb API to:
-  - Retrieve similar movie suggestions
-  - Get image paths
-- 💾 Store movie details (title, year, director, genre, watched status, rating) in a local **SQLite** database
-- 📸 Simulate image downloads
-- 🧹 Full CRUD operations on movies
-- 📑 RESTful API with endpoints for:
-  - Adding a movie
-  - Listing watchlist (with pagination)
-  - Updating watched status
-  - Updating rating
-  - Deleting a movie
+## 🛠️ Technologies Used
 
----
-
-## ⚙️ Technologies
-
-- Java 17
+- Java 21
+- Spring Boot
 - Maven
-- Javalin (Web Framework)
-- OkHttp (HTTP Client)
-- Gson (JSON parser)
-- SQLite (Database)
-- JUnit 5 (Testing)
+- H2 (in-memory database for testing)
+- OMDb API
+- TMDB API
+- JUnit & Mockito (for testing)
+- Gson (for JSON parsing)
+- OkHttp (for HTTP requests)
 
----
+## 📦 Project Structure
+movie-watchlist/
+├── src/
+│ ├── main/
+│ │ ├── java/com/oop3/watchlist/
+│ │ │ ├── controller/
+│ │ │ ├── model/
+│ │ │ ├── repository/
+│ │ │ ├── service/
+│ │ │ └── service/api/
+│ ├── test/
+│ │ └── java/com/oop3/watchlist/
+├── pom.xml
+└── README.md
 
-## 🚀 How to Run
 
-### ✅ Prerequisites:
-- Java 17 or higher installed
-- Maven installed
+## 🚀 Running the Application
 
-### ▶️ Steps:
-```bash
-git clone https://gitlab.com/your_username/oop3-assignment-723073.git
-cd movie-watchlist
-mvn compile
-mvn exec:java
-Then go to:
-http://localhost:7070
+1. Make sure you have Java 21 and Maven installed.
+2. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/movie-watchlist.git
+   cd movie-watchlist
 
-🧪 How to Test
 
-mvn test
-Unit tests are located in src/test/java
+Run the app:
+mvn spring-boot:run
 
-API Endpoints
-
-Method	Endpoint	Description
-GET	/	Health check
-GET	/movies?title={title}	Fetch and store movie by title
-GET	/watchlist?page=1&size=10	Get paginated movie list
-PUT	/watchlist/{id}/watched	Update watched status (true/false)
-PUT	/watchlist/{id}/rating	Update rating (0-10)
-DELETE	/watchlist/{id}	Delete movie by ID
-
-├── api/              # OMDb and TMDb client (real & mock)
-├── db/               # SQLite access layer (DAO)
-├── model/            # Movie entity
-├── service/          # Business logic
-├── Main.java         # Starts the server
-└── test/             # JUnit test cases
-
-📌 Notes
-
-TMDb features (similar movies and images) are mocked.
-OMDb requests are real and require an API key.
-Images are not actually downloaded—only simulated.
-
+Or build and run:
+mvn clean package
+java -jar target/movie-watchlist-1.0.0.jar

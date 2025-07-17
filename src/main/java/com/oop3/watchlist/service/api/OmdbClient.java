@@ -1,27 +1,21 @@
-package com.oop3.watchlist.api;
+package com.oop3.watchlist.service.api;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
-/**
- * Client for fetching movie data from the OMDb API.
- */
+@Service
 public class OmdbClient {
 
     private static final String API_KEY = "32dcb0cc";
-    private static final OkHttpClient client = new OkHttpClient();
+    private final OkHttpClient client = new OkHttpClient();
 
-    /**
-     * Fetches movie details from OMDb using the given title.
-     * @param title the movie title
-     * @return JSON object with movie data; or null if request fails
-     */
-    public static JsonObject fetchMovie(String title) {
+    public JsonObject fetchMovie(String title) {
         String url = "http://www.omdbapi.com/?t=" + title.replace(" ", "%20") + "&apikey=" + API_KEY;
 
         try {

@@ -1,91 +1,113 @@
 package com.oop3.watchlist.model;
 
-/**
- * Movie model class representing a movie in the watchlist.
- */
+import jakarta.persistence.*;
+import java.util.List;
+
+@Entity
 public class Movie {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String title;
     private String year;
     private String director;
     private String genre;
     private boolean watched;
     private int rating;
-    private String[] similarMovies;   // ✅ NEW
-    private String[] imagePaths;      // ✅ NEW
 
-    // Getters
-    public int getId() {
+    @ElementCollection
+    private List<String> similarMovies;
+
+    @ElementCollection
+    private List<String> imagePaths;
+
+    // Constructors
+    public Movie() {}
+
+    public Movie(Long id, String title, String year, String director, String genre, boolean watched, int rating, List<String> similarMovies, List<String> imagePaths) {
+        this.id = id;
+        this.title = title;
+        this.year = year;
+        this.director = director;
+        this.genre = genre;
+        this.watched = watched;
+        this.rating = rating;
+        this.similarMovies = similarMovies;
+        this.imagePaths = imagePaths;
+    }
+
+    // Getter and Setter methods
+    public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String getYear() {
-        return year;
-    }
-
-    public String getDirector() {
-        return director;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public boolean isWatched() {
-        return watched;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public String[] getSimilarMovies() {
-        return similarMovies;
-    }
-
-    public String[] getImagePaths() {
-        return imagePaths;
-    }
-
-    // Setters
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getYear() {
+        return year;
     }
 
     public void setYear(String year) {
         this.year = year;
     }
 
+    public String getDirector() {
+        return director;
+    }
+
     public void setDirector(String director) {
         this.director = director;
+    }
+
+    public String getGenre() {
+        return genre;
     }
 
     public void setGenre(String genre) {
         this.genre = genre;
     }
 
+    public boolean isWatched() {
+        return watched;
+    }
+
     public void setWatched(boolean watched) {
         this.watched = watched;
+    }
+
+    public int getRating() {
+        return rating;
     }
 
     public void setRating(int rating) {
         this.rating = rating;
     }
 
-    public void setSimilarMovies(String[] similarMovies) {
+    public List<String> getSimilarMovies() {
+        return similarMovies;
+    }
+
+    public void setSimilarMovies(List<String> similarMovies) {
         this.similarMovies = similarMovies;
     }
 
-    public void setImagePaths(String[] imagePaths) {
+    public List<String> getImagePaths() {
+        return imagePaths;
+    }
+
+    public void setImagePaths(List<String> imagePaths) {
         this.imagePaths = imagePaths;
     }
 }
-
