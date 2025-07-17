@@ -2,6 +2,9 @@ package com.oop3.watchlist.service.api;
 
 import org.springframework.stereotype.Service;
 
+/**
+ * API client for TMDb.
+ */
 @Service
 public class TmdbClient {
 
