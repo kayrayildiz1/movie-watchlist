@@ -9,11 +9,21 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
+/**
+ * API client for OMDb API.
+ */
+
 @Service
 public class OmdbClient {
 
     private static final String API_KEY = "32dcb0cc";
     private final OkHttpClient client = new OkHttpClient();
+
+    /**
+     * Fetches OMDb data for a movie by title.
+     * @param title title of the movie
+     * @return movie data as JsonObject
+     */
 
     public JsonObject fetchMovie(String title) {
         String url = "http://www.omdbapi.com/?t=" + title.replace(" ", "%20") + "&apikey=" + API_KEY;
